@@ -3,6 +3,7 @@ FROM ubuntu:22.04
 LABEL authors=37987433+HarryCuk@users.noreply.github.com
 LABEL description="Runner container with tools to enable automation of Cisco DNAC(Catalyst Centre)"
 ENV TERM linux
+ENV TERM=xterm-256color
 WORKDIR /root
 
 #############################################################################
@@ -17,3 +18,18 @@ WORKDIR /root
 #                                                                           #
 #############################################################################                                        
 
+# Timezone
+ENV TZ=Europe/London
+
+# Install Pre-requisites
+RUN apt-get -y update --fix-missing && apt-get -y upgrade
+RUN apt-get -y install tzdata
+
+# Install Python3 and PIP package manager
+RUN apt install -y python3 && \
+    apt install -y python3-pip
+
+# Install Ansible
+RUN pip install ansible
+
+CMD ["bash"]
