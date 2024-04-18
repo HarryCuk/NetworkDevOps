@@ -1,3 +1,4 @@
+.devcontainer
 .devcontainer/devcontainer.json
 .devcontainer/Dockerfile
 .github/dependabot.yml
